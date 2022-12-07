@@ -1,4 +1,4 @@
-package tech.ityoung.spring.a05.beanfactorybeanpostprocessor;
+package tech.ityoung.spring.a05.beanfactorypostprocessor;
 
 
 import lombok.extern.slf4j.Slf4j;

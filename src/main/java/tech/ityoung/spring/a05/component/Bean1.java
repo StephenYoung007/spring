@@ -8,4 +8,8 @@ public class Bean1 {
     public Bean1() {
       log.info("bean1 constructed");
     }
+
+    public void init() {
+        log.warn("bean1 initiated");
+    }
 }
