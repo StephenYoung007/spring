@@ -14,9 +14,13 @@ public class ProxyDemo {
     public static void main(String[] args) {
 //        proxyTest();
         Dog dog = new Dog();
-        Dog cgLibProxy = (Dog) Enhancer.create(Dog.class, (MethodInterceptor) (o, method, args1, methodProxy) -> {
+        Dog cgLibProxy = (Dog) Enhancer.create(Dog.class, (MethodInterceptor) (proxy, method, args1, methodProxy) -> {
             log.info("cgLibProxy was born");
-            Object invoke = method.invoke(dog, args1);
+            // Object invoke = method.invoke(dog, args1);
+            // methodProxy避免反射, spring采用这个方案
+//            Object invoke = methodProxy.invoke(dog, args1);
+            // proxy ： 代理对象自身
+            Object invoke = methodProxy.invokeSuper(proxy, args);
             log.info("cgLibProxy was dead");
             return invoke;
         });
